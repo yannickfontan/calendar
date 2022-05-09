@@ -1,0 +1,51 @@
+<div class="reminder-title">
+  Reminder: {{ reminder.id ? 'Edition' : 'Creation' }}
+</div>
+<div class="reminder-form-wrapper">
+  <div class="reminder-list">
+    <app-calendar-reminders [reminders]="reminders" (call)="setReminder($event)"></app-calendar-reminders>
+    <button *ngIf="msg" mat-button (click)="newReminder()">
+      <mat-icon>add</mat-icon>
+      New reminder
+    </button>
+  </div>
+  <div *ngIf="msg" class="form-msg">
+    <p>{{msg}}</p>
+    <i>You can create a new reminder or select an existing reminder.</i>
+  </div>
+  <div *ngIf="!msg" class="reminder-form">
+    <div class="input-color">
+      <label for="favcolor">Color</label>
+      <input type="color" [(ngModel)]="reminder.color" id="favcolor" name="favcolor">
+    </div>
+    <div class="input-text">
+      <label>Text</label>
+      <input type="text" [(ngModel)]="reminder.text" maxlength="30" id="text">
+    </div>
+    <div class="input-date-time">
+      <label>DateTime</label>
+      <input type="datetime-local" id="datetime" [value]="dateStr" (change)="onChangeDate($event)" [min]="today()"/>
+    </div>
+    <div class="input-city">
+      <label>City</label>
+      <select (change)="onChangeCity($event.target.value)" [ngModel]="reminder.city" id="city">
+        <option *ngFor="let city of cities" value="{{city}}">{{city}}</option>
+      </select>
+    </div>
+    <div class="weather-wrapper">
+      <label *ngIf="reminder.city">Weather in {{reminder.city}} :</label>
+      <div class="weather-info" *ngIf="reminder.weatherInfo">
+        <span class="weather-desc">{{reminder.weatherInfo[0].description}}</span>
+        <img class="weather-img" src="{{imageUrl}}{{reminder.weatherInfo[0].icon}}@2x.png" *ngIf="reminder.weatherInfo[0].icon">
+      </div>
+    </div>
+    <div class="form-buttons">
+      <button class="save-btn" type="button" (click)="saveAction()" [disabled]="isDisabled()">Save</button>
+      <button class="cancel-btn" type="button" (click)="closeDialog()">Cancel</button>
+      <button class="delete-btn" type="button" (click)="delete()" *ngIf="reminder.id">Delete</button>
+    </div>
+  </div>
+</div>
+
+
+

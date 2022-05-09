@@ -1,0 +1,25 @@
+.month-wrapper {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+
+  .month {
+    text-transform: capitalize;
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    user-select: none;
+  }
+
+  .arrows {
+    font-size: 50px;
+    position: relative;
+    top: 5px;
+    margin: -5px 1em 0;
+    user-select: none;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,128 @@
+.reminder-title {
+  width: 100%;
+  background-color: steelblue;
+  color: white;
+  font-size: 20px;
+  font-family: Verdana, sans-serif;
+  font-weight: bold;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  border-bottom: 3px solid lightgray;
+}
+
+.reminder-form-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-height: 512px;
+
+  .reminder-list {
+    width: 50%;
+    padding: 20px;
+    border-right: 3px solid lightgray;
+    button {
+      float: right;
+      box-shadow: 0 3px 8px rgb(0 0 0 / 30%);
+    }
+  }
+
+  .form-msg {
+    width: 50%;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .reminder-form {
+    width: 50%;
+    padding: 20px;
+    font-weight: bold;
+
+    .input-color, .input-text, .input-date-time, .input-city, .weather-wrapper {
+      margin-bottom: 10px;
+    }
+
+    .weather-wrapper {
+      height: 150px;
+
+      .weather-info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 200px;
+
+        .weather-desc {
+          flex: 1;
+          color: black;
+          text-align: right;
+          padding-right: 15px;
+        }
+
+        .weather-img {
+          width: 80px;
+          border: 3px solid steelblue;
+          border-radius: 50%;
+          background-color: lightblue;
+        }
+      }
+    }
+
+    input, select {
+      width: 100%;
+      height: 30px;
+      padding: 4px 7px;
+      font-size: 1rem;
+      background-color: white;
+      border: 1px solid lightgray;
+      border-radius: 0.25rem;
+    }
+
+    .form-buttons {
+      white-space: nowrap;
+
+      .save-btn, .cancel-btn, .delete-btn {
+        color: white;
+        cursor: pointer;
+        float: right;
+        border: 0;
+        border-radius: 5px;
+        font-size: 16px;
+        margin: 8px 0 0 8px;
+        padding: 6px 12px;
+      }
+
+      .save-btn {
+        background-color: steelblue;
+
+        &:hover {
+          background-color: darken(steelblue, 20%);
+        }
+        &:disabled {
+          background-color: lightgray;
+          cursor: not-allowed;
+        }
+      }
+
+      .cancel-btn {
+        background-color: gray;
+
+        &:hover {
+          background-color: darken(gray, 20%);
+        }
+      }
+
+      .delete-btn {
+        background-color: salmon;
+
+        &:hover {
+          background-color: darken(salmon, 20%);
+        }
+      }
+    }
+  }
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+}

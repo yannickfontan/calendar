@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <span>Yannick @ Jobsity</span>
+  <app-month (changed)="changeDate($event)"></app-month>
+  <button mat-button (click)="openReminder()">
+    <mat-icon>add</mat-icon>
+    New reminder
+  </button>
+</mat-toolbar>
+
+<div class="calendar-wrapper">
+  <div class="calendar-content">
+    <div class="calendar-days">
+      <div class="calendar-day" *ngFor="let day of days">
+        {{day}}
+      </div>
+    </div>
+    <div class="calendar-dates">
+      <div class="calendar-date" *ngFor="let d of dates" [class.week-end]="isWeekEnd(d)">
+        <span [class.outside]="isOutside(d)" [class.inside]="!isOutside(d)">{{d.getDate()}}</span>
+        <div class="missing-reminders" *ngIf="getMissingReminders(d) > 0" (click)="openReminder(d, null, d.toLocaleDateString())">+{{getMissingReminders(d)}} R.</div>
+        <div class="date-add-reminder" *ngIf="!isPast(d)" (click)="openReminder(d)"><mat-icon>add</mat-icon></div>
+        <app-calendar-reminders [reminders]="getPreviewedReminders(d)" (call)="openOneReminder(d, $event)"></app-calendar-reminders>
+      </div>
+    </div>
+  </div>
+</div>
